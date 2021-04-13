@@ -29,6 +29,7 @@ app.get('/api/notes', (req, res) => res.json(noteList));
 //receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client
 app.post('/api/notes', (req, res) => {
     const newNote = {
+        title: req.body.title,
         text: req.body.text,
         id: generateUniqueId()
     };
@@ -39,5 +40,8 @@ app.post('/api/notes', (req, res) => {
 
     res.send(todoList);
 });
+
+//delete notes
+// api.delete('/api/notes/:id', (req, res) => 
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
